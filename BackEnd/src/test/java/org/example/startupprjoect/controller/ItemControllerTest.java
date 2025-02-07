@@ -5,7 +5,7 @@ import org.example.startupprjoect.Controller.ItemController;
 import org.example.startupprjoect.Service.ServiceImpl.ItemServiceImpl;
 import org.example.startupprjoect.model.Item;
 import org.example.startupprjoect.security.JWTAuthenticationFilter;
-import org.example.startupprjoect.security.JWTGenrator;
+import org.example.startupprjoect.security.JWTGenerator;
 import org.hamcrest.Matchers;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,7 +13,6 @@ import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMock
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.test.web.servlet.MockMvcBuilder;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 
@@ -32,7 +31,7 @@ public class ItemControllerTest {
     private ItemServiceImpl itemService;
 
     @MockBean
-    private JWTGenrator jwtGenerator;  // Add this
+    private JWTGenerator jwtGenerator;  // Add this
 
     @MockBean
     private JWTAuthenticationFilter jwtAuthFilter;

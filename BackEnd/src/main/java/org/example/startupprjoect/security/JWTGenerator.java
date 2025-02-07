@@ -16,10 +16,13 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Component
-public class JWTGenrator {
+public class JWTGenerator {
 
     @Value("${jwt.secretKey}")
     private String secretKey;
+
+  
+
 
     private SecretKey getSigningKey() {
 

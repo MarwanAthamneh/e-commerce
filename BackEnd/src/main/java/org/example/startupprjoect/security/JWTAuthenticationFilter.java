@@ -24,7 +24,7 @@ import java.util.stream.Collectors;
 public class JWTAuthenticationFilter extends OncePerRequestFilter {
 
     @Autowired
-    private JWTGenrator jwtGenrator;
+    private JWTGenerator jwtGenrator;
 
     @Autowired
     private CustomUserDetailsService customUserDetailsService;

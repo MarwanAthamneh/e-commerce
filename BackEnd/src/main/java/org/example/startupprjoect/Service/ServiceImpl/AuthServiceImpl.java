@@ -9,7 +9,7 @@ import org.example.startupprjoect.model.UserE;
 import org.example.startupprjoect.model.dto.AuthResponseDTO;
 import org.example.startupprjoect.model.dto.LoginDTO;
 import org.example.startupprjoect.model.dto.RegisterDTO;
-import org.example.startupprjoect.security.JWTGenrator;
+import org.example.startupprjoect.security.JWTGenerator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -39,7 +39,7 @@ public class AuthServiceImpl implements AuthService {
     private PasswordEncoder passwordEncoder;
 
     @Autowired
-    private JWTGenrator jwtGenrator;
+    private JWTGenerator jwtGenrator;
 
     @Transactional
     public String register(RegisterDTO registerDTO) {

@@ -1,10 +1,9 @@
 package org.example.startupprjoect.Controller;
 
-import jakarta.persistence.EntityNotFoundException;
 import org.example.startupprjoect.Service.ServiceImpl.CartServiceImpl;
 import org.example.startupprjoect.model.CartItem;
 import org.example.startupprjoect.model.dto.CartItemDTO;
-import org.example.startupprjoect.security.JWTGenrator;
+import org.example.startupprjoect.security.JWTGenerator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -23,7 +22,7 @@ public class CartController {
     private CartServiceImpl cartService;
 
     @Autowired
-    private JWTGenrator jwtGenrator;
+    private JWTGenerator jwtGenrator;
 
     @GetMapping("/{userId}")
     public ResponseEntity<?> getCartItemsByUserId(
