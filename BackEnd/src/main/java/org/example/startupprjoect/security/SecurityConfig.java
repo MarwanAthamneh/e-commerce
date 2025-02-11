@@ -50,6 +50,7 @@ public class SecurityConfig {
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers("/api/auth/**").permitAll()
                         .requestMatchers("/api/item/list").permitAll()
+                        .requestMatchers("/api/contact/send").permitAll()
                         .requestMatchers("/api/cart/**").authenticated() // Change this to just require authentication
                         .anyRequest().authenticated()
                 )

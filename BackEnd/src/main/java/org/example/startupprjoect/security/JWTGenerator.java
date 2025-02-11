@@ -21,7 +21,7 @@ public class JWTGenerator {
     @Value("${jwt.secretKey}")
     private String secretKey;
 
-  
+
 
 
     private SecretKey getSigningKey() {

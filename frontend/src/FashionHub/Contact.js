@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import './Style/Contact.css';
+import { useNavigate } from 'react-router-dom'; 
+
 
 const PhoneIcon = () => (
     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -22,10 +24,19 @@ const LocationIcon = () => (
 );
 
 const Contact = () => {
+    const navigate = useNavigate(); // This line should now work
+
     const [formData, setFormData] = useState({
         name: '',
         email: '',
         subject: '',
+        message: ''
+    });
+
+    const [submitStatus, setSubmitStatus] = useState({
+        isLoading: false,
+        success: false,
+        error: false,
         message: ''
     });
 
@@ -37,9 +48,39 @@ const Contact = () => {
         }));
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        console.log('Form submitted:', formData);
+        
+        setSubmitStatus({ isLoading: true, success: false, error: false, message: '' });
+
+        try {
+            const response = await fetch('http://localhost:9090/api/contact/send', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(formData)
+            });
+
+            if (response.ok) {
+                navigate('/thank-you');
+            } else {
+                const errorText = await response.text();
+                setSubmitStatus({
+                    isLoading: false,
+                    success: false,
+                    error: true,
+                    message: errorText || 'Failed to send message'
+                });
+            }
+        } catch (error) {
+            setSubmitStatus({
+                isLoading: false,
+                success: false,
+                error: true,
+                message: 'Network error. Please try again.'
+            });
+        }
     };
 
     return (
@@ -64,6 +105,18 @@ const Contact = () => {
                         </div>
                     </div>
                 </div>
+                
+                {submitStatus.success && (
+                    <div className="success-message">
+                        {submitStatus.message}
+                    </div>
+                )}
+                
+                {submitStatus.error && (
+                    <div className="error-message">
+                        {submitStatus.message}
+                    </div>
+                )}
                 
                 <form className="contact-form" onSubmit={handleSubmit}>
                     <div className="form-group">
@@ -113,7 +166,13 @@ const Contact = () => {
                         ></textarea>
                     </div>
                     
-                    <button type="submit" className="submit-btn">Send Message</button>
+                    <button 
+                        type="submit" 
+                        className="submit-btn" 
+                        disabled={submitStatus.isLoading}
+                    >
+                        {submitStatus.isLoading ? 'Sending...' : 'Send Message'}
+                    </button>
                 </form>
             </div>
         </div>

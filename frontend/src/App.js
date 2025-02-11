@@ -6,6 +6,7 @@ import MainPage from './FashionHub/MainPage';
 import AboutUs from './FashionHub/AboutUs';
 import Cart from './FashionHub/Cart';
 import Contact from './FashionHub/Contact';
+import ThankYou from './FashionHub/ThankYou';
 function App() {
 
   return (
@@ -14,10 +15,11 @@ function App() {
       <Routes>
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
-        <Route path='/main' element={<MainPage/> }/>
+        <Route path='/' element={<MainPage/> }/>
         <Route path='/about' element={<AboutUs/>}/>
         <Route path='/cart' element={<Cart/>}/>
         <Route path="/contact" element={<Contact />} />
+        <Route path="/thank-you" element={<ThankYou />} />
 
       </Routes>
     </Router>

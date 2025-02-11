@@ -1,0 +1,116 @@
+.thank-you-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #f4f7f6;
+    padding: 20px;
+}
+
+.thank-you-card {
+    background-color: white;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    padding: 40px;
+    max-width: 500px;
+    width: 100%;
+    transition: transform 0.3s ease;
+}
+
+.thank-you-card:hover {
+    transform: translateY(-10px);
+}
+
+.checkmark-circle {
+    width: 120px;
+    height: 120px;
+    margin: 0 auto 20px;
+    position: relative;
+}
+
+.checkmark-circle-background {
+    stroke: #4caf50;
+    stroke-width: 3;
+    fill: none;
+    animation: circle-fill 0.5s ease-in-out forwards;
+}
+
+.checkmark-icon {
+    stroke: #4caf50;
+    stroke-width: 4;
+    stroke-linecap: round;
+    stroke-dasharray: 48;
+    stroke-dashoffset: 48;
+    animation: checkmark 0.5s ease-in-out 0.5s forwards;
+}
+
+@keyframes circle-fill {
+    from { stroke-dasharray: 0 100; }
+    to { stroke-dasharray: 100 100; }
+}
+
+@keyframes checkmark {
+    0% { stroke-dashoffset: 48; }
+    100% { stroke-dashoffset: 0; }
+}
+
+h1 {
+    color: #333;
+    margin-bottom: 15px;
+    font-size: 2.5rem;
+}
+
+p {
+    color: #666;
+    margin-bottom: 30px;
+    line-height: 1.6;
+}
+
+.thank-you-actions {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+.btn {
+    text-decoration: none;
+    padding: 12px 25px;
+    border-radius: 8px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.btn-primary {
+    background-color: #4caf50;
+    color: white;
+}
+
+.btn-primary:hover {
+    background-color: #45a049;
+}
+
+.btn-secondary {
+    background-color: #f0f0f0;
+    color: #333;
+}
+
+.btn-secondary:hover {
+    background-color: #e0e0e0;
+}
+
+@media (max-width: 600px) {
+    .thank-you-card {
+        padding: 30px;
+        margin: 0 15px;
+    }
+
+    .thank-you-actions {
+        flex-direction: column;
+    }
+
+    .btn {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+}
