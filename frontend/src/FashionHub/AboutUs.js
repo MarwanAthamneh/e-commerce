@@ -1,43 +1,63 @@
 import React from 'react';
-import './Style/AboutUs.css' 
+import './Style/AboutUs.css';
+import { Link } from "react-router-dom";
+
 const AboutUs = () => {
+  const heroStyle = {
+    backgroundImage: `url("Photos/BackGround.jpg")`,
+    backgroundSize: 'cover',
+    backgroundPosition: 'center'
+  };
+
   return (
-    <div className="about-us">
-      <div className="about-header">
-        <h1>About FashionHub</h1>
-        <p>
-          Welcome to FashionHub, your one-stop destination for the latest trends in clothing and fashion. We bring you a curated collection of apparel that combines style, comfort, and affordability.
-        </p>
-      </div>
-
-      <div className="about-content">
-        <div className="about-section">
-          <img src="team.jpg" alt="Our Team" className="about-image" />
-          <h2>Our Mission</h2>
+    <div className="about-us-page">
+      <section className="hero-section" style={heroStyle}>
+        <div className="hero-overlay"></div>
+        <div className="hero-content">
+          <span className="about-tag">ABOUT</span>
+          <h1>
+            Bridging the physical and
+            <br />
+            digital fashion worlds
+          </h1>
           <p>
-            At FashionHub, our mission is to make high-quality fashion accessible to everyone. We strive to inspire confidence through style.
+            We enable consumers to visualize and interact with fashion, creating digital experiences
+            of the future.
           </p>
-        </div>
+          <button className="lets-talk-btn"><Link to="/contact">LET'S TALK →</Link></button>
+          
 
-        <div className="about-section">
-          <img src="sustainability.jpg" alt="Sustainability" className="about-image" />
-          <h2>Our Values</h2>
-          <p>
-            Sustainability, inclusivity, and innovation are at the heart of everything we do. We’re committed to making a positive impact on the planet and the fashion industry.
-          </p>
         </div>
+      </section>
 
-        <div className="about-section">
-          <img src="store.jpg" alt="Our Store" className="about-image" />
-          <h2>Why Choose Us</h2>
-          <p>
-            From timeless classics to the latest trends, FashionHub offers a wide variety of styles for every occasion. Our customer-first approach ensures a seamless shopping experience.
-          </p>
+      <section className="sustainability-section">
+        <div className="sustainability-container">
+          <div className="sustainability-image">
+            <img 
+              src="Photos/aboutus.jpg" 
+              alt="Sustainability in Fashion" 
+            />
+          </div>
+          <div className="sustainability-content">
+            <h2>Sustainability</h2>
+            <p>
+              Global product returns are equivalent to emissions from ~850,000 cars!
+              The majority of apparel returns are due to wrong fit and size. By not
+              actively addressing size and fit, together with the offer of free returns,
+              retailers have inadvertently created an unsustainable shopping behavior.
+              Our virtual fitting solution has been proven to reduce returns by up to 50%,
+              helping to reduce the industry's carbon footprint.
+            </p>
+            <p>
+              Furthermore, digital fashion can help to reduce the overproduction of
+              clothing, saving 3300 liters of water, emitting 97% less carbon emissions.
+              By enabling consumers to wear these items, this impact can be realized.
+            </p>
+          </div>
         </div>
-      </div>
+      </section>
     </div>
   );
 };
 
 export default AboutUs;
-

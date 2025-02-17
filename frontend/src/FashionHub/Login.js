@@ -21,12 +21,11 @@ const Login = () => {
                 const token = response.data.accessToken;
                 localStorage.setItem("jwtToken", token);
                 
-                // Log the token info
                 const decoded = jwtDecode(token);
                 console.log('Token contents:', decoded);
                 
                 alert('Login successful!');
-                navigate('/main');
+                navigate('/');
             }
         } catch (err) {
             console.error('Login error:', err);
