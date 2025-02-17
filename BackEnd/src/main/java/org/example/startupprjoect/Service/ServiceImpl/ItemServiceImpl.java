@@ -1,6 +1,7 @@
 package org.example.startupprjoect.Service.ServiceImpl;
 
 import org.example.startupprjoect.Repository.ItemRespository;
+import org.example.startupprjoect.Service.ItemService;
 import org.example.startupprjoect.model.Item;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -9,7 +10,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class ItemServiceImpl  {
+public class ItemServiceImpl implements ItemService {
 
     @Autowired
    private ItemRespository itemRespository;
