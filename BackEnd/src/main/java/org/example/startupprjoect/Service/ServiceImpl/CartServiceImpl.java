@@ -101,6 +101,7 @@ public class CartServiceImpl implements CartService {
             newCartItem.setCart(cart);
             newCartItem.setItem(item);
             newCartItem.setQuantity(1);
+            item.setStockQuantity(item.getStockQuantity()-1);
             cart.getItems().add(newCartItem);
             cartItemRepository.save(newCartItem);
             System.out.println("Added new item " + itemId + " to cart");
@@ -113,7 +114,6 @@ public class CartServiceImpl implements CartService {
     public void deleteCartItem(Long cartId, Long cartItemId, Long userId) {
         System.out.println("Deleting item " + cartItemId + " from cart " + cartId + " for user " + userId);
 
-        // Find the cart and verify ownership
         Cart cart = cartRepository.findById(cartId)
                 .orElseThrow(() -> new EntityNotFoundException("Cart not found"));
 
@@ -121,22 +121,17 @@ public class CartServiceImpl implements CartService {
             throw new AccessDeniedException("Not authorized to modify this cart");
         }
 
-        // Find the cart item
         CartItem itemToRemove = cartItemRepository.findById(cartItemId)
                 .orElseThrow(() -> new EntityNotFoundException("Cart item not found"));
 
-        // Verify the item belongs to the specified cart
         if (!itemToRemove.getCart().getId().equals(cartId)) {
             throw new IllegalArgumentException("Item does not belong to the specified cart");
         }
 
-        // Remove the item from the cart's items collection
         cart.getItems().removeIf(item -> item.getId().equals(cartItemId));
 
-        // Delete the cart item
         cartItemRepository.delete(itemToRemove);
 
-        // Save the cart to persist changes
         cartRepository.save(cart);
 
         System.out.println("Successfully deleted cart item");

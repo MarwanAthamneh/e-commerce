@@ -2,6 +2,7 @@ package org.example.startupprjoect.Controller;
 
 import org.example.startupprjoect.Service.ServiceImpl.UserServiceImpl;
 import org.example.startupprjoect.model.UserE;
+import org.example.startupprjoect.model.dto.RegisterDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -15,6 +16,12 @@ public class UserController {
 
     @Autowired
     private UserServiceImpl userService;
+
+    @PostMapping
+    public String addUser(@RequestBody RegisterDTO user){
+        userService.addUser(user);
+        return "User Registered successfully" ;
+    }
 
     @GetMapping("/{id}")
     public Optional<UserE> getUser(@PathVariable Long id){
